@@ -5,32 +5,34 @@
 <details>
 <summary>Part 1 : 블로그 제작 & 기초 문법</summary>
 
-- [ ] React 배우기 전에 쓰는 이유부터 알아야  
-- [ ] 리액트 React 설치와 개발환경 셋팅  
-- [ ] 리액트에서 레이아웃 만들 때 쓰는 JSX 문법 3개  
-- [ ] 중요한 데이터는 변수말고 state에 담습니다  
-- [ ] 버튼에 기능개발을 해보자 & 리액트 state변경하는 법  
-- [ ] array, object state 변경하는 법  
-- [ ] Component : 많은 div들을 한 단어로 줄이고 싶으면  
-- [ ] 리액트 환경에서 동적인 UI 만드는 법 (모달창만들기)  
-- [ ] map : 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때  
-- [ ] 자식이 부모의 state 가져다쓰고 싶을 때는 props  
-- [ ] props를 응용한 상세페이지 만들기  
-- [ ] input 1 : 사용자가 입력한 글 다루기  
-- [ ] input 다루기 2 : 블로그 글발행 기능 만들기  
-- [ ] class를 이용한 옛날 React 문법  
-- [ ] 만든 리액트 사이트 build & Github Pages로 배포해보기  
+- [x] React 배우기 전에 쓰는 이유부터 알아야  
+- [x] 리액트 React 설치와 개발환경 셋팅  
+- [x] 리액트에서 레이아웃 만들 때 쓰는 JSX 문법 3개  
+- [x] 중요한 데이터는 변수말고 state에 담습니다  
+- [x] 버튼에 기능개발을 해보자 & 리액트 state변경하는 법  
+- [x] array, object state 변경하는 법  
+- [x] Component : 많은 div들을 한 단어로 줄이고 싶으면  
+- [x] 리액트 환경에서 동적인 UI 만드는 법 (모달창만들기)  
+- [x] map : 많은 div들을 반복문으로 줄이고 싶은 충동이 들 때  
+- [x] 자식이 부모의 state 가져다쓰고 싶을 때는 props  
+- [x] props를 응용한 상세페이지 만들기  
+- [x] input 1 : 사용자가 입력한 글 다루기  
+- [x] input 다루기 2 : 블로그 글발행 기능 만들기  
+- [x] class를 이용한 옛날 React 문법  
+- [x] 만든 리액트 사이트 build & Github Pages로 배포해보기
+
 <br>
+
 </details>
 
 <details>
 <summary>Part 2 : 쇼핑몰 프로젝트</summary>
 
-- [ ] 새로운 프로젝트 생성 & Bootstrap 사용하기  
-- [ ] 이미지 넣는 법 & public 폴더 이용하기  
-- [ ] 코드 길어지면 import export 하면 됩니다  
-- [ ] 저번시간 숙제 해설 (Card 컴포넌트 만들기)  
-- [ ] 리액트 라우터 1 : 셋팅이랑 기본 라우팅  
+- [x] 새로운 프로젝트 생성 & Bootstrap 사용하기  
+- [x] 이미지 넣는 법 & public 폴더 이용하기  
+- [x] 코드 길어지면 import export 하면 됩니다  
+- [x] 저번시간 숙제 해설 (Card 컴포넌트 만들기)  
+- [x] 리액트 라우터 1 : 셋팅이랑 기본 라우팅  
 - [ ] 리액트 라우터 2 : navigate, nested routes, outlet  
 - [ ] 리액트 라우터 3 : URL 파라미터로 상세페이지 100개 만들기  
 - [ ] styled-components 쓰면 CSS 파일 없어도 되는데  
