@@ -36,7 +36,15 @@ React로 만든 간단 블로그 앱입니다. 게시글 목록, 좋아요, 글 
 <br>
 
 ## 데모 화면
-![React Blog Demo](./demo.gif)
+| **Change Post Title**                                                                                         | **Open Modal**                                                                                              |
+|---------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| ![update-title](https://github.com/user-attachments/assets/6e3bb75a-5c78-4253-8c90-df7bdf9cef1c)              | ![open-modal](https://github.com/user-attachments/assets/dabfe822-783c-4fbb-b219-fed0d4ccb66f)              |
+
+| **Create New Post**                                                                                           | **Delete Post**                                                                                             |
+|---------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| ![create-post](https://github.com/user-attachments/assets/1ee6b72f-ef7e-47ad-a09a-ee750432fa71)               | ![delete-post](https://github.com/user-attachments/assets/aa92c28a-d341-43f3-b3b3-f79dc922a86f)             |
+
+<br>
 
 ## 4. 주요 기능 
 1. **“가나다순 정렬” / “❤️” 버튼**:  
