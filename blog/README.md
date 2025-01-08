@@ -1,70 +1,217 @@
-# Getting Started with Create React App
+## 소개
+React로 만든 간단 블로그 앱입니다. 게시글 목록, 좋아요, 글 발행, 삭제, 모달창 표시 등 기본 기능을 포함합니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
 
-## Available Scripts
+## What I Learned
+### 1. State와 Props
+- **State**: 함수형 컴포넌트에서 `useState`를 활용해 값이 변경될 때 자동으로 재렌더링되는 구조를 이해했습니다.
+- **Props**: 부모에서 자식 컴포넌트로 데이터를 전송할 때 사용. 모달창 컴포넌트에 글제목 배열과 현재 선택된 인덱스를 props로 내려주는 식으로 구현했습니다.
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+### 2. 배열/객체 조작
+- 스프레드 연산자(...)로 복사본을 만든 다음 수정해야 React가 변경 사항을 인식한다는 점을 배웠습니다.  
+  예) `let copy = [...글제목]`  
+- `.map()`을 사용해 게시글을 반복 렌더링하며, index값(i)을 사용해서 해당 게시글의 따봉(좋아요) 수나 제목 등을 갱신했습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 3. 이벤트 핸들링
+- `onClick`, `onChange` 등의 기본 이벤트에서 **화살표 함수**를 쓸 때 `e.stopPropagation()`으로 이벤트 버블링을 막는 방법을 알았습니다.
+- 새 글을 발행할 때, 입력값을 state로 받고, 버튼 클릭 시 `글제목` 배열 앞에 새 글을 추가 (`copyTitle.splice(0, 0, 입력값)`) 하는 식으로 구현했습니다.
 
-### `npm test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. 모달창 (Modal Component)
+- `modal` 상태값을 `true` 혹은 `false`로 관리해, 조건부 렌더링(`{modal === true ? <Modal /> : null}`)을 통해 모달을 띄우는 구조.
+- **클릭한 제목**의 인덱스를 `title`에 저장해 모달 컴포넌트에서 알맞은 글제목을 표시하게 했습니다.
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 5. 클래스 컴포넌트 (Modal2)
+- 함수형 컴포넌트와 달리, `this.setState()`로 state를 변경해야 하는 점이 다릅니다.
+- React 최신 문법인 Hooks와 비교했을 때, state나 라이프사이클 관리가 좀 더 번거롭지만, 기존 프로젝트에는 여전히 남아 있는 경우가 많다는 점을 알았습니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 데모 화면
+![React Blog Demo](./demo.gif)
 
-### `npm run eject`
+## 4. 주요 기능 
+1. **“가나다순 정렬” / “❤️” 버튼**:  
+   - 첫 번째 게시글 제목을 **‘여자 코트 추천’** 등으로 변경하거나,  
+   - 기존 게시글 배열을 **정렬**하여 글 목록 순서를 즉시 바꿀 수 있습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **게시글 클릭 시 모달창 표시**:  
+   - 특정 게시글을 클릭하면 **Modal** 컴포넌트를 활성화하여,  
+   - 선택된 게시글에 대한 **상세 정보**(제목, 내용 등)를 표시합니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **새로운 글 발행 & 좋아요(👍) 기능**:  
+   - 하단의 **입력란**에서 새 글을 작성해, 기존 게시글 목록의 **앞쪽**에 추가할 수 있습니다.  
+   - 좋아요 버튼(👍)을 누르면 해당 글의 **따봉(좋아요) 수**가 1 증가합니다.
 
-## Learn More
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. **글 삭제**:  
+   - 게시글 오른쪽의 **삭제 버튼**을 누르면, 해당 글이 **목록에서 사라짐**  
+   - `splice()`로 해당 인덱스(i)의 글제목과 좋아요를 동시 관리 (제목·좋아요 배열 둘 다 수정)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 5. 설치 & 실행
+```bash
+git clone https://github.com/JJOK97/react_codingapple.git
+cd blog
+npm install
+npm start
+```
 
-### Analyzing the Bundle Size
+- 브라우저 [http://localhost:3000](http://localhost:3000) 접속
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br>
 
-### Making a Progressive Web App
+## 6. 코드 설명
+<details>
+<summary>코드 보기</summary>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```jsx
+import React, { useState } from 'react';
+import './App.css';
 
-### Advanced Configuration
+function App() {
+  // 글제목과 좋아요(따봉) 수를 배열 state로 관리
+  let [글제목, 글제목변경] = useState(['남자 코트 추천', '강남 우동 맛집', '파이썬 독학']);
+  let [따봉, 따봉변경] = useState([0, 0, 0]);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  // 모달창 표시 여부 & 선택된 글 인덱스
+  let [modal, setModal] = useState(false);
+  let [title, setTitle] = useState(0);
 
-### Deployment
+  // 새 글 발행 시 입력값
+  let [입력값, 입력값변경] = useState('');
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  // 글 목록 정렬 버튼
+  function sortTitles() {
+    let copy = [...글제목];
+    copy.sort(); // 가나다순 정렬
+    글제목변경(copy);
+  }
 
-### `npm run build` fails to minify
+  // 첫 번째 글 수정 버튼 (❤️)
+  function changeFirstTitle() {
+    let copy = [...글제목];
+    copy[0] = '여자 코트 추천';
+    글제목변경(copy);
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  // 좋아요(👍) 증가 함수
+  function addLike(i) {
+    let copy = [...따봉];
+    copy[i] = copy[i] + 1;
+    따봉변경(copy);
+  }
+
+  // 새 글 발행
+  function createPost() {
+    // 글제목 배열 맨 앞에 입력값 추가
+    let copyTitle = [...글제목];
+    copyTitle.unshift(입력값);
+
+    // 따봉 배열도 동일하게 맨 앞에 0 추가
+    let copyLike = [...따봉];
+    copyLike.unshift(0);
+
+    글제목변경(copyTitle);
+    따봉변경(copyLike);
+  }
+
+  // 글 삭제
+  function deletePost(i) {
+    let copyTitle = [...글제목];
+    copyTitle.splice(i, 1);
+
+    let copyLike = [...따봉];
+    copyLike.splice(i, 1);
+
+    글제목변경(copyTitle);
+    따봉변경(copyLike);
+  }
+
+  return (
+    <div className="App">
+      <div className="black-nav">
+        <h4>React Blog</h4>
+      </div>
+
+      {/* 버튼 기능들 */}
+      <button onClick={sortTitles}>가나다순 정렬</button>
+      <button onClick={changeFirstTitle}>❤️</button>
+
+      {/* 게시글 목록 표시 */}
+      {글제목.map((titleText, i) => (
+        <div className="list" key={i}>
+          <h4
+            onClick={() => {
+              // 모달 열기 + 클릭한 글의 인덱스 기억
+              setModal(true);
+              setTitle(i);
+            }}
+          >
+            {titleText}
+            <span
+              onClick={(e) => {
+                e.stopPropagation(); // 상위 클릭 이벤트 막기
+                addLike(i);
+              }}
+            >
+              {' '}👍
+            </span> {따봉[i]}
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); // 상위 클릭 이벤트 막기
+                deletePost(i);
+              }}
+            >
+              글 삭제
+            </button>
+          </h4>
+          <p>2월 17일 발행</p>
+        </div>
+      ))}
+
+      {/* 새 글 발행 */}
+      <input
+        onChange={(e) => {
+          입력값변경(e.target.value);
+        }}
+      />
+      <button onClick={createPost}>글 생성</button>
+
+      {/* 모달창 표시 */}
+      {modal === true ? <Modal 글제목={글제목} title={title} /> : null}
+    </div>
+  );
+}
+
+// 모달창 컴포넌트
+function Modal(props) {
+  return (
+    <div className="modal">
+      <h4>{props.글제목[props.title]}</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+      <button>글 수정</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+</details>
