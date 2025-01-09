@@ -33,7 +33,7 @@
 - [x] 코드 길어지면 import export 하면 됩니다  
 - [x] 저번시간 숙제 해설 (Card 컴포넌트 만들기)  
 - [x] 리액트 라우터 1 : 셋팅이랑 기본 라우팅  
-- [ ] 리액트 라우터 2 : navigate, nested routes, outlet  
+- [x] 리액트 라우터 2 : navigate, nested routes, outlet  
 - [ ] 리액트 라우터 3 : URL 파라미터로 상세페이지 100개 만들기  
 - [ ] styled-components 쓰면 CSS 파일 없어도 되는데  
 - [ ] Lifecycle과 useEffect 1  
