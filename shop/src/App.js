@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import { a, b } from 'data.js';
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
-import DetailPage from './routes/Detail.js';
+import DetailPage from './routes/DetailPage.js';
 
 function App() {
     let [shoes, setShoes] = useState(data);
@@ -90,9 +90,12 @@ function App() {
                         </>
                     }
                 />
-                <Route path='/detail' element={<DetailPage />} />
+                {/* URL파라미터 적용 */}
+                <Route path='/detail/:id' element={<DetailPage shoes={shoes} />} />
+
                 {/* 404페이지 */}
                 <Route path='*' element={<div>404</div>} />
+
                 {/* Nested Routes */}
                 {/* 기본 방식 
                     <Route path='/about' elemtne={<About />} />
