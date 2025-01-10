@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import 작명 from 'data.js';
 // import { a, b } from 'data.js';
 import data from './data.js';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import DetailPage from './routes/Detail.js';
 
 function App() {
     let [shoes, setShoes] = useState(data);
@@ -18,14 +19,31 @@ function App() {
     //     </div>
     // ));
 
+    // 페이지 이동 도와주는 useNavigate();
+    let navigate = useNavigate();
+
     return (
         <div className='App'>
             <Navbar bg='dark' data-bs-theme='dark'>
                 <Container>
                     <Navbar.Brand href='#home'>ShoeShop</Navbar.Brand>
                     <Nav className='me-auto'>
-                        <Nav.Link href='#home'>Home</Nav.Link>
-                        <Nav.Link href='#features'>Cart</Nav.Link>
+                        {/* navigate 활용 */}
+                        <Nav.Link
+                            onClick={() => {
+                                navigate('/');
+                            }}
+                        >
+                            Home
+                        </Nav.Link>
+                        {/* <Nav.Link href='#features'>Cart</Nav.Link> */}
+                        <Nav.Link
+                            onClick={() => {
+                                navigate('detail');
+                            }}
+                        >
+                            Detail
+                        </Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
@@ -73,25 +91,47 @@ function App() {
                     }
                 />
                 <Route path='/detail' element={<DetailPage />} />
+                {/* 404페이지 */}
+                <Route path='*' element={<div>404</div>} />
+                {/* Nested Routes */}
+                {/* 기본 방식 
+                    <Route path='/about' elemtne={<About />} />
+                    <Route path='/about/member' elemtne={<About />} />
+                    <Route path='/about/location' elemtne={<About />} /> 
+                */}
+                <Route path='/about' element={<About />}>
+                    <Route path='member' element={<div>멤버임</div>} />
+                    <Route path='location' element={<div>위치정보임</div>} />
+                </Route>
+                {/* 장점 nested route 접속시엔 element 2개 동시에 보임 */}
+
+                {/* homework */}
+                <Route path='/event' element={<Event />}>
+                    <Route path='one' element={<div>첫 주문시 양배추즙 서비스</div>} />
+                    <Route path='two' element={<div>생일기념 쿠폰받기</div>} />
+                </Route>
             </Routes>
+
+            {/* <Link> 태그를 활용할 수 있음 </Link> */}
         </div>
     );
 }
 
-function DetailPage() {
+function Event() {
     return (
-        <div className='container'>
-            <div className='row'>
-                <div className='col-md-6'>
-                    <img src='https://codingapple1.github.io/shop/shoes1.jpg' width='100%' />
-                </div>
-                <div className='col-md-6'>
-                    <h4 className='pt-5'>상품명</h4>
-                    <p>상품설명</p>
-                    <p>120000원</p>
-                    <button className='btn btn-danger'>주문하기</button>
-                </div>
-            </div>
+        <div>
+            <h4>오늘의 이벤트</h4>
+            <Outlet></Outlet>
+        </div>
+    );
+}
+
+function About() {
+    return (
+        <div>
+            <h4>어바웃페이지임</h4>
+            {/* /about/member 접속시 <About>&<div>멤버</div> 둘다보임*/}
+            <Outlet></Outlet>
         </div>
     );
 }
